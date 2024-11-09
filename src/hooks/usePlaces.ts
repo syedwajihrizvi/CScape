@@ -24,7 +24,7 @@ export const usePlaces = (useActiveCategory:boolean = false) => {
     return useQuery({
         queryKey: [location, categoryQuery],
         queryFn: () => fetchPlaces(),
-        keepPreviousData: true,
+        placeholderData: (prev) => prev,
         enabled: !!categoryQuery
         },
     )
@@ -49,7 +49,7 @@ export const useMultiplePlaces = () => {
     return useQuery({
         queryKey: [location, categoriesToQuery],
         queryFn: () => fetchPlaces(),
-        keepPreviousData: true,
+        placeholderData: (prev) => prev,
         enabled: !!categoriesToQuery
         },
     )    

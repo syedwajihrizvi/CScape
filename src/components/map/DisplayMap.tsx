@@ -24,7 +24,7 @@ function DisplayMap() {
         if (selectedPlan == null || !tripInfo)
             return <MapHandler place={selectedPlace} marker={marker} 
                                location={selectedPlace?.geometry?.location} 
-                               viewPort={selectedPlace?.geometry?.viewport}/>
+                               viewPort={selectedPlace?.geometry?.viewport as google.maps.LatLngBounds}/>
         // eslint-disable-next-line no-unsafe-optional-chaining
         const { coordinates, viewPort } = tripInfo?.tripSummary
         const lat = parseFloat(coordinates.lat)
