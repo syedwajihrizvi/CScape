@@ -7,3 +7,10 @@ export const getDate = (dateString: string) => {
     // Format the date as mm/dd/yyyy
     return `${month}/${day}/${year}`;
 }
+
+export const slugify = (string_to_convert: string) => 
+    string_to_convert.toLowerCase()
+                    .trim()
+                    .replace(/[^\w\s-]/g, '')
+                    .replace(/[\s_-]+/g, '-')
+                    .replace(/^-+|-+$/g, '');

@@ -7,7 +7,7 @@ import { useState } from "react"
 import { apiClient } from "../../utils/clients/apiClient";
 import usePlaceStore from "../../stores/usePlaceStore";
 import { useTrips } from "../../hooks/useTrips";
-import { getDate } from "../../utils/common/common";
+import { getDate, slugify } from "../../utils/common/common";
 import { Trip } from "../../interfaces/interfaces";
 import { useNavigate } from "react-router-dom";
 
@@ -32,10 +32,13 @@ function Trips() {
 
     const onPlanSubmit = () => {
         apiClient.post('/trips', 
-                        {name: planName, 
-                        location: place?.formatted_address, 
-                        coordinates: place?.geometry?.location,
-                        viewPort: place?.geometry?.viewport}, {
+                        {
+                            slug: slugify(planName),
+                            name: planName, 
+                            location: place?.formatted_address, 
+                            coordinates: place?.geometry?.location,
+                            viewPort: place?.geometry?.viewport
+                        }, {
             headers: {
                 'x-auth-token': localStorage.getItem('x-auth-token')
             }
