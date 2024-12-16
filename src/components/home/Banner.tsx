@@ -3,8 +3,31 @@ import displayImage from "../../assets/images/main/cscape.png"
 import AirplanemodeActiveIcon from '@mui/icons-material/AirplanemodeActive';
 import MapIcon from '@mui/icons-material/Map';
 import PaidIcon from '@mui/icons-material/Paid';
+import {useGSAP} from "@gsap/react"
+import gsap from 'gsap'
 
 function Banner() {
+
+    useGSAP(() => {
+        gsap.fromTo('.banner__img', {
+            opacity: 0,
+            left: '-100%'
+        },
+        {
+            opacity: 1,
+            left: 0
+        })
+
+        gsap.fromTo('.banner__description', {
+            opacity: 0,
+            right: '-100%'
+        },
+        {
+            opacity: 1,
+            right: '0'
+        })
+    }, [])
+
     return (
         <Container className="container">
             <Box className="banner">

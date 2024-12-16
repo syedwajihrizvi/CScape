@@ -15,6 +15,6 @@ export const renderRating = (rating: number | undefined) => {
             backgroundColor = "#F44336";  // Red
         return <Chip sx={{ backgroundColor: backgroundColor, padding: "0.1rem", borderRadius: 0, color: 'black' }} label={rating?.toFixed(1)} />
     }
-    return <Chip sx={{ backgroundColor: "black", color: "black", padding: "0.1rem", borderRadius: 0 }} label="N/A" />
+    return <Chip sx={{ backgroundColor: "white", color: "black", padding: "0.1rem", borderRadius: 0 }} label="N/A" />
     
 }

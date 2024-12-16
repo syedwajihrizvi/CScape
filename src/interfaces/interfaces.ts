@@ -20,7 +20,8 @@ export interface CScapeReview {
     last_name: string,
     city: string,
     year: string,
-    review: string
+    money_saved: number,
+    rating: number
 }
 
 export interface PlaceDetails {

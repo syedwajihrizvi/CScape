@@ -31,7 +31,7 @@ function TripDetails() {
     }
 
     const handleDeletePlan = () => {
-        apiClient.delete(`/trips/${selectedPlan?.slug}`,
+        apiClient.delete(`/trips/${selectedPlan?._id}`,
             {headers: {'x-auth-token': localStorage.getItem('x-auth-token')}})
         .then(() => {
             notifySuccess()
@@ -70,8 +70,8 @@ function TripDetails() {
             {places?.tripPlaces.length == 0 &&
             <h1>No Places in Trips</h1>
             }
-            <Button sx={{backgroundColor: 'white', padding: '1rem', color: 'black'}} onClick={handleMakeTripPlan}>Make a Trip Plan</Button>
-            <Button sx={{backgroundColor: 'white', padding: '1rem', color: 'black', margin: '1rem'}} onClick={handleDeletePlan}>Delete Trip</Button>
+            {places && places?.tripPlaces.length > 0 && <Button sx={{backgroundColor: 'black', padding: '1rem', color: 'white'}} onClick={handleMakeTripPlan}>Make a Trip Plan</Button>}
+            <Button sx={{backgroundColor: 'black', padding: '1rem', color: 'white', margin: '1rem'}} onClick={handleDeletePlan}>Delete Trip</Button>
             <ToastContainer position="top-center"/>
         </Box>
     )

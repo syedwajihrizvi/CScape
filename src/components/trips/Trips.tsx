@@ -22,8 +22,12 @@ function Trips() {
     const onPlanSelect = (plan: Trip) => {
         // If a plan is being unselected we should navigate to the city info page
         // else navigate to the new plan page
+        console.log('Plan Selected')
+        console.log(plan._id)
         handleSetSelectedPlan(plan)
-        if (plan._id == selectedPlan?.slug) {
+        console.log(selectedPlan?._id)
+        if (plan._id == selectedPlan?._id) {
+            console.log("Navigate to main")
             navigate('/main')
         } else {
             navigate(`/main/trips/${plan.slug}`)

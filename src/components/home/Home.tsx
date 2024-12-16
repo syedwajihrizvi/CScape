@@ -5,7 +5,6 @@ import Banner from "./Banner"
 import ShowCase from "./ShowCase"
 import Action from "./Action"
 import Footer from "./Footer"
-import Detail from "./Detail"
 import Divider from '@mui/material/Divider';
 
 
@@ -18,12 +17,11 @@ function Home() {
             <Box className="main">
                 <Banner/>
                 <Divider/>
+                <Reviews/>
+                <Divider/>
                 <ShowCase/>
                 <Divider/>
                 <Action/>
-                <Divider/>
-                <Reviews/>
-                <Detail/>
             </Box>
             <Box className="footer">
                 <Footer/>
