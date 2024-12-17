@@ -79,3 +79,8 @@ export interface DetailedTrip {
     tripPlaces: Place[]
 
 }
+
+export interface User {
+    _id: string,
+    firstName: string
+}
