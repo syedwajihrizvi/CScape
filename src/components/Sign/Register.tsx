@@ -79,7 +79,7 @@ function Register() {
             <Link href="/sign" underline="none">Already have an account? Sign In.</Link>
         </Box>
         <Button 
-        sx={{backgroundColor: 'white', color: 'black', padding: '0.5rem 1rem', fontSize: '1.5rem'}}
+        sx={{backgroundColor: 'black', color: 'white', padding: '0.5rem 1rem', fontSize: '1.5rem'}}
         onClick={handleSubmit(onFormSubmit)}>
             Sign Up
         </Button>

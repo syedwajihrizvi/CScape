@@ -67,7 +67,7 @@ function SignIn() {
           <Link href="/sign/register" underline="none">Create Account</Link>
         </Box>
         <Button
-          sx={{ backgroundColor: 'white', color: 'black', padding: '0.5rem 1rem', fontSize: '1.5rem' }}
+          sx={{ backgroundColor: 'black', color: 'white', padding: '0.5rem 1rem', fontSize: '1.5rem' }}
           onClick={handleSubmit(onSignIn)}>
           Sign In
         </Button>
