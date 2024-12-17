@@ -5,9 +5,11 @@ import { useState } from "react"
 import { Logout, Settings } from "@mui/icons-material"
 import PersonIcon from '@mui/icons-material/Person';
 import { useNavigate } from "react-router-dom"
+import { useUser } from "../../hooks/useUsers"
 
 function MainNavbar() {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+    const {data:user, isFetched} = useUser()
     const navigate = useNavigate()
     const open = Boolean(anchorEl)
 
@@ -33,7 +35,8 @@ function MainNavbar() {
                     aria-popup="true"
                     aria-expanded={open ? true : undefined}
                     >
-                    <Avatar sx={{width: 32, height: 32, backgroundColor: 'white', color: 'black'}}>N</Avatar>
+                    {isFetched && 
+                    <Avatar sx={{width: 32, height: 32, backgroundColor: 'white', color: 'black'}}>{user?.firstName[0].toUpperCase()}</Avatar>}
                 </IconButton>
             </Tooltip>
             <Menu
