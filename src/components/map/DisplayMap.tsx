@@ -25,7 +25,7 @@ function DisplayMap() {
         navigate('/main')
         setSelectedPlace(place)
     }
-    console.log("Google Maps API Key:", import.meta.env.VITE_GOOGLE_MAPS_API_KEY);
+    console.log("Google Maps API Key:", import.meta.env.VITE_GOOGLE_MAPS_API_KEY ? "Loaded" : "Not Found");
     const renderHandler = () => {
         if (selectedPlan == null || !tripInfo)
             return <MapHandler place={selectedPlace} marker={marker} 
