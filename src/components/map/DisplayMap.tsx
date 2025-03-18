@@ -1,4 +1,4 @@
-import { APIProvider, MapControl, ControlPosition, useAdvancedMarkerRef } from "@vis.gl/react-google-maps"
+import { APIProvider, MapControl, ControlPosition, useAdvancedMarkerRef, useApiIsLoaded } from "@vis.gl/react-google-maps"
 import MapSearch from "./MapSearch"
 import MapHandler from "./MapHandler"
 import GoogleMap from "./GoogleMap"
@@ -7,6 +7,7 @@ import useWeather from "../../hooks/useWeather"
 import usePlaceStore from "../../stores/usePlaceStore"
 import { useNavigate } from "react-router-dom"
 import { useTripPlaces } from "../../hooks/useTripPlaces"
+import { useEffect } from "react"
 
 function DisplayMap() {
     const { selectedPlan, place:selectedPlace, handlePlaceSelect:setSelectedPlace } = usePlaceStore()
@@ -14,6 +15,11 @@ function DisplayMap() {
     const [markerRef, marker] = useAdvancedMarkerRef()
     const { data: tripInfo } = useTripPlaces()
     const navigate = useNavigate()
+    const apiIsLoaded = useApiIsLoaded()
+    useEffect(() => {
+        if (!apiIsLoaded) return
+    }, [apiIsLoaded])
+
     const handlePlaceSelect = (place: google.maps.places.PlaceResult) => {
         // When a new place is selected, all other details should be reset
         navigate('/main')
