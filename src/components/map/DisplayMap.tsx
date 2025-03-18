@@ -37,7 +37,7 @@ function DisplayMap() {
     }
 
     return (
-            <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} version="3.55">
+            <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}>
                 <GoogleMap markerRef={markerRef}/>
                 <MapControl position={ControlPosition.RIGHT}>
                     <MapSearch onPlaceSelect={handlePlaceSelect}/>
