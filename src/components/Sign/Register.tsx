@@ -76,7 +76,11 @@ function Register() {
             />
             {errors?.password && <Typography sx={{color: 'red', width: '60%', textAlign: 'left'}}>Please enter valid password</Typography>}
         <Box>
-            <Link href="/sign" underline="none">Already have an account? Sign In.</Link>
+            <Link href="/sign" underline="none">
+                <Typography>
+                    Already have an account? <Typography style={{color: 'black', fontWeight: 'bold', cursor: 'pointer'}}>Sign In Here</Typography>
+                </Typography>
+            </Link>
         </Box>
         <Button 
         sx={{backgroundColor: 'black', color: 'white', padding: '0.5rem 1rem', fontSize: '1.5rem'}}
