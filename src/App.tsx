@@ -4,6 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { RouterProvider } from 'react-router-dom';
 import router from './routes/routes';
+import GlobalProvider from './providers/global-provider';
 
 const darkTheme = createTheme({
   palette: {
@@ -18,7 +19,9 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline/>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
+        <GlobalProvider>
+          <RouterProvider router={router}/>
+        </GlobalProvider>
         <ReactQueryDevtools initialIsOpen={true}/>
       </QueryClientProvider>
     </ThemeProvider>

@@ -28,9 +28,9 @@ function Trips() {
         console.log(selectedPlan?._id)
         if (plan._id == selectedPlan?._id) {
             console.log("Navigate to main")
-            navigate('/main')
+            navigate('/')
         } else {
-            navigate(`/main/trips/${plan.slug}`)
+            navigate(`/trips/${plan.slug}`)
         }
     }
 

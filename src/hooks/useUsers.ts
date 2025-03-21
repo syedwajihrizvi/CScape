@@ -11,11 +11,11 @@ export const useUser = () => {
             }
         })
         .then(res => res.data)
-        .catch(() => console.log("An error occured"))
+        .catch((err) => err)
 
 
     return useQuery<User>({
-        queryKey: [localStorage.getItem('x-auth-token')],
+        queryKey: ["me"],
         queryFn: fetchUser
     })
 }

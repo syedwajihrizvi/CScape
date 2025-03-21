@@ -20,15 +20,15 @@ function SearchCategory() {
     const handleCategorySingleClick = (category: string) => {
         handleActiveCategorySelect(category)
         if (category == activeCategory) {
-            navigate('/main')
+            navigate('/')
         } else {
-            navigate('/main/listings')
+            navigate('/listings')
         }
     }
 
     const handleCategoryDoubleClick = (index: number) => {
         handleCategoryDelete(index)
-        navigate('/main')
+        navigate('/')
     }
 
     return (

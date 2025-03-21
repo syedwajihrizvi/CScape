@@ -33,9 +33,9 @@ function PlaceDetails() {
 
     const handleBack = () => {
         if (selectedPlan != null) {
-            navigate(`/main/trips/${selectedPlan.slug}`)
+            navigate(`/trips/${selectedPlan.slug}`)
         } else {
-            navigate('/main/listings')
+            navigate('/listings')
             handleSelectedPlace(selectedPlace as Place)
         }
     }
@@ -84,7 +84,7 @@ function PlaceDetails() {
                 queryClient.invalidateQueries({queryKey: [selectedTrip]})
             })
             .catch(() => notify("Failed to remove place from trip", "error"))
-        navigate('/main')
+        navigate('/')
         handleSelectedPlace(selectedPlace as Place)
     }
 

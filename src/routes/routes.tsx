@@ -11,12 +11,8 @@ import CityInfo from "../components/details/CityInfo";
 import OptimizeTrip from "../components/details/OptimizeTrip";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <Home/>
-    },
     { 
-        path: '/main',
+        path: '/',
         element: <Main/>,
         children: [
             {
@@ -24,7 +20,7 @@ const router = createBrowserRouter([
                 element: <CityInfo/>
             },
             {
-                path: '/main/listings',
+                path: 'listings',
                 element: <CategoryListings/>
             },
             {
@@ -40,6 +36,10 @@ const router = createBrowserRouter([
                 element: <OptimizeTrip/>
             }
         ]
+    },
+    {
+        path: '/home',
+        element: <Home/>
     },
     {
         path: '/sign',

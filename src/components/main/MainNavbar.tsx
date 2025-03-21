@@ -1,15 +1,17 @@
-import { Avatar, Box, IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material"
+import { Avatar, Box, Button, IconButton, ListItemIcon, Menu, MenuItem } from "@mui/material"
 import Tooltip from "@mui/material/Tooltip"
 import logo from "../../assets/images/home/logo.png"
 import { useState } from "react"
 import { Logout, Settings } from "@mui/icons-material"
 import PersonIcon from '@mui/icons-material/Person';
-import { useNavigate } from "react-router-dom"
-import { useUser } from "../../hooks/useUsers"
+import { Link, useNavigate } from "react-router-dom"
+import { useGlobalContext } from "../../providers/global-provider"
+import { useQueryClient } from "@tanstack/react-query"
 
 function MainNavbar() {
+    const queryClient = useQueryClient()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-    const {data:user, isFetched} = useUser()
+    const {isLoggedIn, user} = useGlobalContext()
     const navigate = useNavigate()
     const open = Boolean(anchorEl)
 
@@ -20,6 +22,8 @@ function MainNavbar() {
         setAnchorEl(null)
         if (logout) {
             localStorage.removeItem('x-auth-token')
+            queryClient.invalidateQueries({queryKey: ['me']})
+            queryClient.refetchQueries({queryKey: ['me']})
             navigate('/')
         }
     }
@@ -27,6 +31,15 @@ function MainNavbar() {
     return (
         <Box className="main-navbar">
             <img src={logo}/>
+            {!isLoggedIn && 
+            <Link to="/sign/register">
+            <Button style={{backgroundColor:'white', 
+                            color: 'black', padding: "5px 10px", 
+                            borderRadius: '5px'}}>
+                Sign Up
+            </Button>
+            </Link>}
+            {isLoggedIn && user && 
             <Tooltip title="Account settings">
                 <IconButton
                     onClick={handleClick}
@@ -34,11 +47,10 @@ function MainNavbar() {
                     aria-controls={open ? 'account-menu' : undefined}
                     aria-popup="true"
                     aria-expanded={open ? true : undefined}
-                    >
-                    {isFetched && 
-                    <Avatar sx={{width: 32, height: 32, backgroundColor: 'white', color: 'black'}}>{user?.firstName[0].toUpperCase()}</Avatar>}
+                    > 
+                    <Avatar sx={{width: 32, height: 32, backgroundColor: 'white', color: 'black'}}>{user?.firstName[0].toUpperCase()}</Avatar>
                 </IconButton>
-            </Tooltip>
+             </Tooltip>}
             <Menu
                 anchorEl={anchorEl}
                 open={open}

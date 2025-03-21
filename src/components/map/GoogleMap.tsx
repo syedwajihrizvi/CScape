@@ -26,9 +26,9 @@ function GoogleMap({markerRef}: Props) {
     const navigate = useNavigate()
     const handleSelectingMarker = (place: Place) => {
         if (place.name == selectedPlace?.name)
-            navigate(`/main`)
+            navigate(`/`)
         else
-            navigate(`/main/places/${place.place_id}`)
+            navigate(`/places/${place.place_id}`)
         handleSelectedInfoWindowAndSelectedPlace(place)
     }
     return (

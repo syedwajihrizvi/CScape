@@ -22,7 +22,7 @@ function DisplayMap() {
 
     const handlePlaceSelect = (place: google.maps.places.PlaceResult) => {
         // When a new place is selected, all other details should be reset
-        navigate('/main')
+        navigate('/')
         setSelectedPlace(place)
     }
     console.log("Google Maps API Key:", import.meta.env.VITE_GOOGLE_MAPS_API_KEY ? "Loaded" : "Not Found");

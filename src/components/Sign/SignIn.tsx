@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 const schema = z.object({
   email: z.string(),
@@ -17,6 +18,7 @@ const schema = z.object({
 
 type SignInTypeSchema = z.infer<typeof schema>
 function SignIn() {
+    const queryClient = useQueryClient()
     const navigate = useNavigate()
     const [visible, setVisible] = useState(false)
     const { register, handleSubmit } = useForm<SignInTypeSchema>({
@@ -27,7 +29,9 @@ function SignIn() {
       try {
         const result = await apiClient.post('/users/signin', data)
         localStorage.setItem('x-auth-token', result.data)
-        navigate('/main')
+        queryClient.invalidateQueries({ queryKey: ['me'] })
+        queryClient.refetchQueries({ queryKey: ['me'] })
+        navigate('/')
       } catch {
         notify()
       }

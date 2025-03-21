@@ -25,9 +25,9 @@ function CategoryListings() {
     const handleSelectingPlace = (place: Place) => {
         handleSelectedInfoWindowAndSelectedPlace({...place, category: activeCategory as string})
         if (place.place_id == selectedPlace?.place_id)
-            navigate('/main')
+            navigate('/')
         else
-            navigate(`/main/places/${place.place_id}`)
+            navigate(`/places/${place.place_id}`)
     }
     const categoryListings = places ? places[0] : null
     return (

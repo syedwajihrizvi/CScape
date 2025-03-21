@@ -27,7 +27,7 @@ function TripDetails() {
 
     const handleSelectingPlace = (place: Place) => {
         handleSelectedInfoWindowAndSelectedPlace(place)
-        navigate(`/main/places/${place.place_id}`)
+        navigate(`/places/${place.place_id}`)
     }
 
     const handleDeletePlan = () => {
@@ -38,13 +38,13 @@ function TripDetails() {
             queryClient.invalidateQueries({queryKey: ['trips']})
             // Change selected plan and navigate
             handleDeletingSelectedPlan()
-            navigate('/main')
+            navigate('/')
         })
         .catch(() => notifyError())
     }
 
     const handleMakeTripPlan = () => {
-        navigate(`/main/trips/${selectedPlan?.slug}/optimize`)
+        navigate(`/trips/${selectedPlan?.slug}/optimize`)
     }
 
     return (

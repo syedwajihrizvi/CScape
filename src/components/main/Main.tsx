@@ -7,9 +7,17 @@ import usePlaceStore from "../../stores/usePlaceStore";
 import Trips from "../trips/Trips";
 import { Outlet } from "react-router-dom";
 import MainNavbar from "./MainNavbar"
+import { useGlobalContext } from "../../providers/global-provider";
+import { useEffect } from "react";
 
 function Main() {
     const { place, selectedPlace, selectedPlan } = usePlaceStore()
+    const {isLoggedIn, isLoading } = useGlobalContext()
+
+    useEffect(() => {
+        if (isLoading) return;
+    }, [isLoading])
+
     return (
         <Box className={`main-grid ${place || selectedPlace || selectedPlan? "" : "main-grid--no-place"}`}>
             <Box className="main__grid--navbar">
@@ -29,9 +37,10 @@ function Main() {
             <Box className="main__grid--content">
                 <Categories/>
             </Box>
+            {isLoggedIn &&
             <Box className="main__grid--create">
                 <Trips/>
-            </Box>
+            </Box>}
         </Box>
     )
 }
